@@ -81,20 +81,30 @@
         let intentosNo = 0;
 
         function respuestaSi() {
-            switch (intentosNo) {
-                case 0:
-                    mostrarMensaje("¡Awwww ni lo pensaste dos veces! 🥰", "En serio te adoro!!! Dios mío me encantas. Gracias por dejarme ser tu San Valentín ❤️");
-                    break;
-                case 1:
-                    mostrarMensaje("¡Ya me estaba asustando jajaja te quiero! ❤️", "Gracias por decir que sí. Eres la mejor.");
-                    break;
-                case 2:
-                    mostrarMensaje("¡Ya sabía que querrías jeje! ❤️", "Sabía que no podrías resistirte jejeje. Gracias, mi amor.");
-                    break;
-                case 3:
-                default:
-                    mostrarMensaje("ya pero no grites tampoco jajaja te quiero mucho. Nos vemos el 22, mi chinita hermosa 💖 ese día te daré todos tus regalitos);
-                    break;
+            if (intentosNo === 0) {
+                document.getElementById('contenedor').innerHTML = `
+                    <h1>¡Awwww ni lo pensaste dos veces! 🥰</h1>
+                    <p>En serio te adoro!!! Dios mío me encantas. Gracias por dejarme ser tu San Valentín ❤️</p>
+                    <img src="https://github.com/Walter1723/san-valentin/blob/main/bunny.jpg?raw=true" width="200" alt="Conejito lindo">
+                `;
+            } else if (intentosNo === 1) {
+                document.getElementById('contenedor').innerHTML = `
+                    <h1>¡Ya me estaba asustando jajaja te quiero! 🥰</h1>
+                    <p>Gracias por decir que sí, mi chinita hermosa ❤️</p>
+                    <img src="https://github.com/Walter1723/san-valentin/blob/main/bunny.jpg?raw=true" width="200" alt="Conejito lindo">
+                `;
+            } else if (intentosNo === 2) {
+                document.getElementById('contenedor').innerHTML = `
+                    <h1>¡Ya sabía que querrías jeje! 🥰</h1>
+                    <p>Eres la mejor, mi amor ❤️</p>
+                    <img src="https://github.com/Walter1723/san-valentin/blob/main/bunny.jpg?raw=true" width="200" alt="Conejito lindo">
+                `;
+            } else {
+                document.getElementById('contenedor').innerHTML = `
+                    <h1>¡Ya pero no grites tampoco jajaja te quiero mucho! 🥰</h1>
+                    <p>Nos vemos el 22, mi chinita hermosa 💖 ese día te daré todos tus regalitos.</p>
+                    <img src="https://github.com/Walter1723/san-valentin/blob/main/bunny.jpg?raw=true" width="200" alt="Conejito lindo">
+                `;
             }
             lanzarCorazones();
         }
@@ -107,44 +117,21 @@
             switch (intentosNo) {
                 case 1:
                     alert('¿Cómo que no? 😢');
-                    btnSi.style.transform = 'scale(1.2)';
-                    btnNo.style.transform = 'scale(0.8)';
                     break;
                 case 2:
                     alert('¿De veritas no quieres? :c');
-                    btnSi.style.transform = 'scale(1.5)';
-                    btnNo.style.transform = 'scale(0.5)';
                     break;
                 case 3:
                     alert('Yo creo que solo hay una forma de solucionar esto... 😏');
-                    btnSi.style.transform = 'scale(2)';
-                    btnNo.style.transform = 'scale(0.3)';
-                    break;
-                default:
-                    btnSi.style.transform = `scale(${2 + intentosNo * 0.5})`;
-                    btnNo.style.transform = `scale(${Math.max(0.05, 0.3 - intentosNo * 0.05)})`;
-
-                    if (btnNo.offsetWidth < 10) {
-                        btnNo.style.display = 'none';
-                    }
-                    if (btnSi.offsetWidth > 300) {
-                        btnSi.onclick = finalSi;
-                    }
                     break;
             }
-        }
 
-        function finalSi() {
-            mostrarMensaje("¡Ya pero no grites tampoco jajaja te quiero mucho! ❤️", "Nos vemos el 22, mi chinita hermosa 💖 ese día te daré todos tus regalos");
-            lanzarCorazones();
-        }
+            btnSi.style.transform = `scale(${1.2 + intentosNo * 0.3})`;
+            btnNo.style.transform = `scale(${Math.max(0.05, 0.8 - intentosNo * 0.2)})`;
 
-        function mostrarMensaje(titulo, mensaje) {
-            document.getElementById('contenedor').innerHTML = `
-                <h1>${titulo}</h1>
-                <p>${mensaje}</p>
-                <img src="https://github.com/Walter1723/san-valentin/blob/main/bunny.jpg?raw=true" width="200" alt="Conejito lindo">
-            `;
+            if (btnNo.offsetWidth < 10) {
+                btnNo.style.display = 'none';
+            }
         }
 
         function lanzarCorazones() {
