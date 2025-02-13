@@ -144,7 +144,9 @@
                 corazon.style.animationDuration = Math.random() * 3 + 3 + 's';
                 contenedorCorazones.appendChild(corazon);
 
-                setTimeout(() => corazon.remove(), 5000);
+                setTimeout(() => {
+                    corazon.remove();
+                }, 5000);
             }
         }
     </script>
